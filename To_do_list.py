@@ -38,7 +38,7 @@ def setup_database():
         conn.commit()
 
 
-# --- CRUD OPERATIONS ---
+# CRUD
 
 
 def add_task(title):
@@ -46,7 +46,6 @@ def add_task(title):
     query = "INSERT INTO tasks (title) VALUES (%s);"
     with create_connection() as conn:
         with conn.cursor() as cur:
-            # Using (%s,) prevents SQL injection
             cur.execute(query, (title,))
         conn.commit()
     print(f"Added: '{title}'")
@@ -96,7 +95,7 @@ def delete_task(task_id):
         conn.commit()
 
 
-# --- MAIN APPLICATION LOOP ---
+#Main App
 
 
 def main():

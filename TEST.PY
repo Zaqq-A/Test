@@ -4,14 +4,20 @@ from Todos import get_connection
 
 from Todos import get_connection
 
-# 1. Database connection settings
-DB_CONFIG = {
-    "dbname": "todo_db",
-    "user": "postgres",
-    "password": "",  # <-- Change this!
-    "host": "localhost",
-    "port": "5432",
-}
+def create_connection():
+    try:
+        connection = psycopg2.connect(
+            host="ep-long-bread-bjd00y0n-pooler.c-3.eu-west-2.aws.neon.tech",
+            database="neondb",
+            user="neondb_owner",
+            password=DBL,
+            sslmode="require" 
+        )
+        print("Connection to Neon PostgreSQL DB successful")
+        return connection
+    except Exception as e:
+        print(f"Error connecting to the database: {e}")
+        return None
 
 
 def create_connection():
